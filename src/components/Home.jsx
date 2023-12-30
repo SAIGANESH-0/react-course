@@ -9,11 +9,11 @@ const Home = () => {
   const user = useSelector((store) => store.user);
   const navi = useNavigate();
   useEffect(() => {
-    if (!user) navi("/login");
+    // if (!user) navi("/login");
   }, []);
 
   return (
-    <div>
+    <div className="flex flex-wrap justify-between items-start gap-4 p-4">
       {aProducts.length &&
         aProducts.map((i) => {
           return <Product key={i.id} product={i} />;

@@ -4,8 +4,10 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import  appStore  from "./utils/appStore";
+import appStore from "./utils/appStore";
 import { Provider } from "react-redux";
+import ProductDetail from "./components/ProductDetail";
+import Cart from "./components/Cart";
 
 const appRouter = createBrowserRouter([
   {
@@ -22,6 +24,26 @@ const appRouter = createBrowserRouter([
       <>
         <Header />
         <Home />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/product/:id",
+    element: (
+      <>
+        <Header />
+        <ProductDetail />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/cart",
+    element: (
+      <>
+        <Header />
+        <Cart />
         <Footer />
       </>
     ),
