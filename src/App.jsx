@@ -9,6 +9,12 @@ import { Provider } from "react-redux";
 import ProductDetail from "./components/ProductDetail";
 import Cart from "./components/Cart";
 import Payment from "./components/Payment";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+
+const stripePromise = loadStripe(
+  "pk_test_51OTQjESBJRMxZAF9gA99Ycx734fAqTjfAROyhb3cjN09GhSf6ve30Ra22Kk5GRm6jfgBXrYNRljANPOHrpmJYiJV00nVe3wqR8"
+);
 
 const appRouter = createBrowserRouter([
   {
@@ -54,7 +60,9 @@ const appRouter = createBrowserRouter([
     element: (
       <>
         <Header />
-        <Payment />
+        <Elements stripe={stripePromise}>
+          <Payment />
+        </Elements>
         <Footer />
       </>
     ),
