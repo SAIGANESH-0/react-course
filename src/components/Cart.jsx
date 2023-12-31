@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeAll } from "../utils/cartSlice";
+import { useNavigate } from "react-router-dom";
 
 function Cart() {
   const [cartItems, setcartitems] = useState([]);
   const carts = useSelector((state) => state.cart);
   const disp = useDispatch();
+  const nav = useNavigate();
   useEffect(() => {
     setcartitems(carts);
   }, []);
@@ -32,9 +34,15 @@ function Cart() {
       {/* Add logic to calculate total and show checkout button if cart is not empty */}
       {cartItems.length > 0 ? (
         <div className="flex flex-col justify-between items-center">
-          <h1 className="text-lg font-bold">
-            Total: ${}
-          </h1>
+          <h1 className="text-lg font-bold">Total: ${}</h1>
+          <button
+            className="px-4 py-2 my-3 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
+            onClick={() => {
+              nav("/pay");
+            }}
+          >
+            Buy cart
+          </button>
           <button
             className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
             onClick={() => {

@@ -8,6 +8,7 @@ import appStore from "./utils/appStore";
 import { Provider } from "react-redux";
 import ProductDetail from "./components/ProductDetail";
 import Cart from "./components/Cart";
+import Payment from "./components/Payment";
 
 const appRouter = createBrowserRouter([
   {
@@ -44,6 +45,16 @@ const appRouter = createBrowserRouter([
       <>
         <Header />
         <Cart />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/pay",
+    element: (
+      <>
+        <Header />
+        <Payment />
         <Footer />
       </>
     ),
